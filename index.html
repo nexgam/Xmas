@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonne Année</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fc929e, #ffc1c3);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 20px;
+    }
+
+    #message {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      margin: 20px auto;
+      max-width: 500px;
+      white-space: pre-wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #confirmation {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #a0e7a0;
+      display: none;
+    }
+
+    /* Confetti animation */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.5;
+      }
+    }
+    @keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+h1 {
+  animation: pulse 2s infinite;
+}
+    @media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #message {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <h1>Bonne Année ! 🎉</h1>
+  <div id="message">
+    ✨ **Bonne Année !** ✨  
+
+    Chers amis,  
+
+    Que cette nouvelle année vous apporte joie, santé, amour et réussite.  
+    Qu'elle soit remplie de moments précieux, de sourires partagés et de rêves réalisés.  
+
+    Que chaque jour soit une opportunité d'apprendre, de grandir et de savourer la vie pleinement.  
+
+    Merci d’être là, et que cette année soit la meilleure jusqu’à maintenant !  
+
+    Avec toute mon amitié
+  </div>
+
+  <!-- Confetti Script -->
+  <script>
+    function createConfetti() {
+      const confettiCount = 100;
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+        confetti.style.backgroundColor =
+          "hsl(" + Math.random() * 360 + ", 70%, 70%)";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 2000);
+      }
+    }
+
+    function copyMessage() {
+      const message = document.getElementById('message').textContent;
+      navigator.clipboard.writeText(message).then(() => {
+        const confirmation = document.getElementById('confirmation');
+        confirmation.style.display = 'block';
+        setTimeout(() => {
+          confirmation.style.display = 'none';
+        }, 2000);
+      });
+    }
+
+    setInterval(createConfetti, 500);
+  </script>
+    <p>by N3x</p>
+</body>
+</html>
